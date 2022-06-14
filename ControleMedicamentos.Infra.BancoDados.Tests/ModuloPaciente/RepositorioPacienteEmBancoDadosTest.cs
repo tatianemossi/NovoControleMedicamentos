@@ -13,9 +13,14 @@ namespace ControleMedicamentos.Infra.BancoDados.Tests.ModuloPaciente
 
         public RepositorioPacienteEmBancoDadosTest()
         {
-            Db.ExecutarSql("DELETE FROM TBPACIENTE; DBCC CHECKIDENT (TBPACIENTE, RESEED, 0)");
             _paciente = new Paciente("Tatiane Mossi", "1234567890");
             _repositorio = new RepositorioPacienteEmBancoDados();
+        }
+
+        [TestCleanup()]
+        public void Cleanup()
+        {
+            Db.ExecutarSql("DELETE FROM TBPACIENTE; DBCC CHECKIDENT (TBPACIENTE, RESEED, 0)");
         }
 
         [TestMethod]

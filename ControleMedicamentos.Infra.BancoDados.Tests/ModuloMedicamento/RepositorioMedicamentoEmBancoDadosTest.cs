@@ -20,12 +20,17 @@ namespace ControleMedicamentos.Infra.BancoDados.Tests.ModuloMedicamento
 
         public RepositorioMedicamentoEmBancoDadosTest()
         {
-            Db.ExecutarSql("DELETE FROM TBMEDICAMENTO; DBCC CHECKIDENT (TBMEDICAMENTO, RESEED, 0)");
-
             _fornecedor = new Fornecedor("Tatiane Mossi", "991846942", "tati@email.com", "Lages", "SC");
             _medicamento = new Medicamento("Dipirona", "Analgésico", "123", new DateTime(2025, 05, 05), 76);
             _repositorioMedicamento = new RepositorioMedicamentoEmBancoDados();
             _repositorioFornecedor = new RepositorioFornecedorEmBancoDados();
+        }
+
+        [TestCleanup()]
+        public void Cleanup()
+        {
+            Db.ExecutarSql("DELETE FROM TBMEDICAMENTO; DBCC CHECKIDENT (TBMEDICAMENTO, RESEED, 0)");
+            Db.ExecutarSql("DELETE FROM TBFORNECEDOR; DBCC CHECKIDENT (TBFORNECEDOR, RESEED, 0)");
         }
 
         [TestMethod]
@@ -105,7 +110,7 @@ namespace ControleMedicamentos.Infra.BancoDados.Tests.ModuloMedicamento
         {
             //arrange
             _repositorioFornecedor.Inserir(_fornecedor);
-            
+
             var medicamento1 = new Medicamento("Miorelax", "Relaxante Muscular", "234", new DateTime(2026, 06, 06), 61);
             medicamento1.IdFornecedor = _fornecedor.Id;
 

@@ -17,17 +17,20 @@ namespace ControleMedicamentos.Dominio.ModuloRequisicao
         {
             Medicamento = medicamento;
             Paciente = paciente;
+            Funcionario = funcionario;
             QtdMedicamento = qtdMedicamento;
             Data = data;
-            Funcionario = funcionario;
         }
 
         public int QtdMedicamento { get; set; }
         public DateTime Data { get; set; }
         public Medicamento Medicamento { get; set; }
+        public int IdMedicamento { get; set; }
         public Paciente Paciente { get; set; }
+        public int IdPaciente { get; set; }
         public Funcionario Funcionario { get; set; }
-
+        public int IdFuncionario { get; set; }
+        
         public override bool Equals(object obj)
         {
             Requisicao requisicao = obj as Requisicao;
@@ -37,11 +40,11 @@ namespace ControleMedicamentos.Dominio.ModuloRequisicao
 
             return
                 requisicao.Id.Equals(Id) &&
-                requisicao.Medicamento.Equals(Medicamento) &&
-                requisicao.Paciente.Equals(Paciente) &&
+                requisicao.IdMedicamento.Equals(IdMedicamento) &&
+                requisicao.IdPaciente.Equals(IdPaciente) &&
                 requisicao.QtdMedicamento.Equals(QtdMedicamento) &&
                 requisicao.Data.Equals(Data) &&
-                requisicao.Funcionario.Equals(Funcionario);
+                requisicao.IdFuncionario.Equals(IdFuncionario);
         }
     }
 }

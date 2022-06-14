@@ -41,10 +41,10 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloRequisicao
         private const string sqlEditar =
           @"UPDATE TBREQUISICAO
 		        SET
-			        FUNCIONARIO_ID = @FUNCIONARIO_ID
-                    PACIENTE_ID = @PACIENTE_ID
-                    MEDICAMENTO_ID = @MEDICAMENTO_ID
-                    QUANTIDADEMEDICAMENTO = @QUANTIDADEMEDICAMENTO
+			        FUNCIONARIO_ID = @FUNCIONARIO_ID,
+                    PACIENTE_ID = @PACIENTE_ID,
+                    MEDICAMENTO_ID = @MEDICAMENTO_ID,
+                    QUANTIDADEMEDICAMENTO = @QUANTIDADEMEDICAMENTO,
                     DATA = @DATA
 		        WHERE
 			        ID = @ID";
@@ -68,14 +68,11 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloRequisicao
 	            FROM 
 		            TBREQUISICAO R 
                 INNER JOIN
-                    TBFUNCIONARIO FUNC ON
-                    R.FUNCIONARIO_ID = FUNC.ID
+                    TBFUNCIONARIO FUNC ON R.FUNCIONARIO_ID = FUNC.ID
                 INNER JOIN
-                    TBPACIENTE P ON
-                    R.PACIENTE_ID = P.ID
+                    TBPACIENTE P ON R.PACIENTE_ID = P.ID
                 INNER JOIN
-                    TBMEDICAMENTO M ON
-                    R.MEDICAMENTO_ID = M.ID
+                    TBMEDICAMENTO M ON R.MEDICAMENTO_ID = M.ID
                 WHERE
                     R.ID = @ID";
 
@@ -93,14 +90,11 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloRequisicao
 	            FROM 
 		            TBREQUISICAO R 
                 INNER JOIN
-                    TBFUNCIONARIO FUNC ON
-                    R.FUNCIONARIO_ID = FUNC.ID
+                    TBFUNCIONARIO FUNC ON R.FUNCIONARIO_ID = FUNC.ID
                 INNER JOIN
-                    TBPACIENTE P ON
-                    R.PACIENTE_ID = P.ID
+                    TBPACIENTE P ON R.PACIENTE_ID = P.ID
                 INNER JOIN
-                    TBMEDICAMENTO M ON
-                    R.MEDICAMENTO_ID = M.ID";
+                    TBMEDICAMENTO M ON R.MEDICAMENTO_ID = M.ID";
 
         #endregion
 
@@ -236,6 +230,9 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloRequisicao
                 Id = id,
                 Data = data,
                 QtdMedicamento = quantidadeMedicamento,
+                IdFuncionario = idFuncionario,
+                IdMedicamento = idMedicamento,
+                IdPaciente = idPaciente,
 
                 Funcionario = new Funcionario
                 {
@@ -263,9 +260,9 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloRequisicao
         {
             comando.Parameters.AddWithValue("DATA", requisicao.Data);
             comando.Parameters.AddWithValue("QUANTIDADEMEDICAMENTO", requisicao.QtdMedicamento);
-            comando.Parameters.AddWithValue("FUNCIONARIO_ID", requisicao.Funcionario.Id);
-            comando.Parameters.AddWithValue("PACIENTE_ID", requisicao.Paciente.Id);
-            comando.Parameters.AddWithValue("MEDICAMENTO_ID", requisicao.Medicamento.Id);
+            comando.Parameters.AddWithValue("FUNCIONARIO_ID", requisicao.IdFuncionario);
+            comando.Parameters.AddWithValue("PACIENTE_ID", requisicao.IdPaciente);
+            comando.Parameters.AddWithValue("MEDICAMENTO_ID", requisicao.IdMedicamento);
         }
     }
 }
