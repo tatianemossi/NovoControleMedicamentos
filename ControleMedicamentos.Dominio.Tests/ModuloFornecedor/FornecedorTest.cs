@@ -91,5 +91,26 @@ namespace ControleMedicamentos.Dominio.Tests.ModuloFornecedor
             Assert.AreEqual("'Estado' não pode ser nulo.", resultado.Errors[8].ErrorMessage);
             Assert.AreEqual("'Estado' deve ser informado.", resultado.Errors[9].ErrorMessage);
         }
+
+        [TestMethod]
+        public void Deve_retornar_sucesso_quando_fornecedor_estiver_valido()
+        {
+            //arrange
+            var fornecedor = new Fornecedor();
+
+            var validador = new ValidadorFornecedor();
+
+            fornecedor.Nome = "Tatiane Mossi";
+            fornecedor.Email = "tati@email.com";
+            fornecedor.Telefone = "991846942";
+            fornecedor.Cidade = "Lages";
+            fornecedor.Estado = "SC";
+
+            //action
+            var resultado = validador.Validate(fornecedor);
+
+            //assert
+            Assert.IsTrue(resultado.IsValid);
+        }
     }
 }
