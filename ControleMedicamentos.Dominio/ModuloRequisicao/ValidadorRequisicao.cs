@@ -6,15 +6,15 @@ namespace ControleMedicamentos.Dominio.ModuloRequisicao
     {
         public ValidadorRequisicao()
         {
-            RuleFor(x => x.Medicamento).NotNull().NotEmpty();
+            RuleFor(x => x.IdMedicamento).NotEmpty();
 
-            RuleFor(x => x.QtdMedicamento).NotNull().NotEmpty();
+            RuleFor(x => x.QtdMedicamento).NotEmpty();
 
-            RuleFor(x => x.Paciente).NotNull().NotEmpty();
+            RuleFor(x => x.IdPaciente).NotEmpty();
 
-            RuleFor(x => x.Funcionario).NotNull().NotEmpty();
+            RuleFor(x => x.IdFuncionario).NotEmpty();
 
-            RuleFor(x => x.Data).NotNull().NotEmpty();
+            RuleFor(x => x.Data).NotEmpty();
         }
     }
 }

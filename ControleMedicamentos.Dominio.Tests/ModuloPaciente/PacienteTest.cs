@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Globalization;
 
-namespace ControleMedicamentos.Dominio.Tests.ModuloFornecedor
+namespace ControleMedicamentos.Dominio.Tests.ModuloPaciente
 {
     [TestClass]
     public class PacienteTest

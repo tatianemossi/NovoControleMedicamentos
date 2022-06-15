@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Globalization;
 
-namespace ControleMedicamentos.Dominio.Tests.ModuloFornecedor
+namespace ControleMedicamentos.Dominio.Tests.ModuloFuncionario
 {
     [TestClass]
     public class FuncionarioTest
@@ -57,7 +57,7 @@ namespace ControleMedicamentos.Dominio.Tests.ModuloFornecedor
 
             //assert
             Assert.AreEqual("'Senha' não pode ser nulo.", resultado.Errors[4].ErrorMessage);
-            Assert.AreEqual("'Senha' deve ser informado.", resultado.Errors[5].ErrorMessage); 
+            Assert.AreEqual("'Senha' deve ser informado.", resultado.Errors[5].ErrorMessage);
         }
 
         [TestMethod]
