@@ -10,11 +10,14 @@ namespace ControleMedicamentos.Dominio.ModuloMedicamento
 
             RuleFor(x => x.Descricao).NotNull().NotEmpty();
 
-            RuleFor(x => x.QuantidadeDisponivel).NotNull().NotEmpty();
+            RuleFor(x => x.QuantidadeDisponivel).NotNull().NotEmpty()
+                .WithMessage("'Quantidade Disponivel' não pode ser nula ou vazia.");
 
-            RuleFor(x => x.Validade).NotNull().NotEmpty();
+            RuleFor(x => x.Validade).NotNull().NotEmpty()
+                .WithMessage("'Validade' não pode ser nula ou vazia.");
 
-            RuleFor(x => x.IdFornecedor).NotNull().NotEmpty();
+            RuleFor(x => x.IdFornecedor).NotNull().NotEmpty()
+                .WithMessage("'IdFornecedor' não pode ser nulo ou vazio.");
 
             RuleFor(x => x.Lote).NotNull().NotEmpty();
         }
