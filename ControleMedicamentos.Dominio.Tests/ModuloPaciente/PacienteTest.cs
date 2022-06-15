@@ -52,13 +52,13 @@ namespace ControleMedicamentos.Dominio.Tests.ModuloFornecedor
 
             var validador = new ValidadorPaciente();
 
-            paciente.CartaoSUS = "12345";
+            paciente.CartaoSUS = "123";
 
             //action
             var resultado = validador.Validate(paciente);
 
             //assert
-            Assert.AreEqual("'Cartao SUS' deve ter no mínimo 10 caracteres.", resultado.Errors[2].ErrorMessage);
+            Assert.AreEqual("'Cartao SUS' deve ter no mínimo 5 caracteres.", resultado.Errors[2].ErrorMessage);
         }
     }
 }

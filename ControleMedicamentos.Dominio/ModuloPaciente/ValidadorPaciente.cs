@@ -10,8 +10,8 @@ namespace ControleMedicamentos.Dominio.ModuloPaciente
 
             RuleFor(x => x.CartaoSUS).NotNull().NotEmpty();
 
-            RuleFor(x => x.CartaoSUS).MinimumLength(10)
-                .WithMessage("'Cartao SUS' deve ter no mínimo 10 caracteres.");
+            RuleFor(x => x.CartaoSUS).MinimumLength(5)
+                .WithMessage("'Cartao SUS' deve ter no mínimo 5 caracteres.");
         }
     }
 }
