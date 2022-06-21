@@ -6,9 +6,7 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloRequisicao
     public class RepositorioRequisicaoEmBancoDados : RepositorioBase<Requisicao, ValidadorRequisicao, MapeadorRequisicao>
     {
         #region SQL Queries
-        protected override string sqlInserir
-        {
-            get =>
+        protected override string sqlInserir =>
             @"INSERT INTO TBREQUISICAO
              (
                     FUNCIONARIO_ID,
@@ -25,11 +23,8 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloRequisicao
                     @QUANTIDADEMEDICAMENTO,
                     @DATA
             );SELECT SCOPE_IDENTITY();";
-        }
 
-        protected override string sqlEditar
-        {
-            get =>
+        protected override string sqlEditar =>
           @"UPDATE TBREQUISICAO
 		        SET
 			        FUNCIONARIO_ID = @FUNCIONARIO_ID,
@@ -39,19 +34,13 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloRequisicao
                     DATA = @DATA
 		        WHERE
 			        ID = @ID";
-        }
 
-        protected override string sqlExcluir
-        {
-            get =>
+        protected override string sqlExcluir =>
             @"DELETE FROM TBREQUISICAO
 		        WHERE
 			        ID = @ID";
-        }
 
-        protected override string sqlSelecionarPorId
-        {
-            get =>
+        protected override string sqlSelecionarPorId =>
             @"SELECT 
 		            R.ID, 
 		            R.QUANTIDADEMEDICAMENTO,
@@ -72,11 +61,8 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloRequisicao
                     TBMEDICAMENTO M ON R.MEDICAMENTO_ID = M.ID
                 WHERE
                     R.ID = @ID";
-        }
 
-        protected override string sqlSelecionarTodos
-        {
-            get =>
+        protected override string sqlSelecionarTodos =>
              @"SELECT 
 		            R.ID, 
 		            R.QUANTIDADEMEDICAMENTO,
@@ -95,7 +81,6 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloRequisicao
                     TBPACIENTE P ON R.PACIENTE_ID = P.ID
                 INNER JOIN
                     TBMEDICAMENTO M ON R.MEDICAMENTO_ID = M.ID";
-        }
 
         #endregion
     }

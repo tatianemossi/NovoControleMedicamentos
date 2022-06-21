@@ -7,9 +7,7 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloFuncionario
         RepositorioBase<Funcionario, ValidadorFuncionario, MapeadorFuncionario>
     {
         #region SQL Queries
-        protected override string sqlInserir
-        {
-            get =>
+        protected override string sqlInserir =>
              @"INSERT INTO TBFUNCIONARIO
              (
                     NOME,
@@ -22,11 +20,8 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloFuncionario
                     @LOGIN,
                     @SENHA
             );SELECT SCOPE_IDENTITY();";
-        }
 
-        protected override string sqlEditar
-        {
-            get =>
+        protected override string sqlEditar =>
            @"UPDATE TBFUNCIONARIO
 		        SET
 			        NOME = @NOME,
@@ -34,19 +29,13 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloFuncionario
                     SENHA = @SENHA
 		        WHERE
 			        ID = @ID";
-        }
 
-        protected override string sqlExcluir
-        {
-            get =>
+        protected override string sqlExcluir =>
             @"DELETE FROM TBFUNCIONARIO
 		        WHERE
 			        ID = @ID";
-        }
 
-        protected override string sqlSelecionarPorId
-        {
-            get =>
+        protected override string sqlSelecionarPorId =>
             @"SELECT 
 		            ID, 
 		            NOME,
@@ -56,11 +45,8 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloFuncionario
 		            TBFUNCIONARIO
 		        WHERE
                     ID = @ID";
-        }
 
-        protected override string sqlSelecionarTodos
-        {
-            get =>
+        protected override string sqlSelecionarTodos =>
              @"SELECT 
 		            ID, 
 		            NOME,
@@ -68,7 +54,6 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloFuncionario
                     SENHA
 	            FROM 
 		            TBFUNCIONARIO";
-        }
         #endregion
     }
 }

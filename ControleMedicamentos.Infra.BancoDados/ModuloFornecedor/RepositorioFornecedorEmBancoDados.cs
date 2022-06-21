@@ -7,9 +7,7 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloFornecedor
         RepositorioBase<Fornecedor, ValidadorFornecedor, MapeadorFornecedor>
     {
         #region SQL Queries
-        protected override string sqlInserir
-        {
-            get =>
+        protected override string sqlInserir =>
             @"INSERT INTO TBFORNECEDOR
             (
                     NOME,
@@ -26,11 +24,8 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloFornecedor
                     @CIDADE,
                     @ESTADO
             );SELECT SCOPE_IDENTITY();";
-        }
 
-        protected override string sqlEditar
-        {
-            get =>
+        protected override string sqlEditar =>
            @"UPDATE TBFORNECEDOR
 		        SET
 			        NOME = @NOME,
@@ -40,19 +35,13 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloFornecedor
                     ESTADO = @ESTADO
 		        WHERE
 			        ID = @ID";
-        }
 
-        protected override string sqlExcluir
-        {
-            get =>
+        protected override string sqlExcluir =>
             @"DELETE FROM TBFORNECEDOR
 		        WHERE
 			        ID = @ID";
-        }
 
-        protected override string sqlSelecionarPorId
-        {
-            get =>
+        protected override string sqlSelecionarPorId =>
             @"SELECT 
 		            ID, 
 		            NOME,
@@ -64,11 +53,8 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloFornecedor
 		            TBFORNECEDOR
 		        WHERE
                     ID = @ID";
-        }
 
-        protected override string sqlSelecionarTodos
-        {
-            get =>
+        protected override string sqlSelecionarTodos =>
              @"SELECT 
 		            ID, 
 		            NOME,
@@ -78,7 +64,6 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloFornecedor
                     ESTADO
 	            FROM 
 		            TBFORNECEDOR";
-        }
 
         #endregion
     }

@@ -6,9 +6,7 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloMedicamento
     public class RepositorioMedicamentoEmBancoDados : RepositorioBase<Medicamento, ValidadorMedicamento, MapeadorMedicamento>
     {
         #region SQL Queries
-        protected override string sqlInserir
-        {
-            get =>
+        protected override string sqlInserir =>
          @"INSERT INTO TBMEDICAMENTO
              (
                     NOME,
@@ -27,11 +25,8 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloMedicamento
                     @QUANTIDADEDISPONIVEL,
                     @FORNECEDOR_ID
             );SELECT SCOPE_IDENTITY();";
-        }
 
-        protected override string sqlEditar
-        {
-            get =>
+        protected override string sqlEditar =>
            @"UPDATE TBMEDICAMENTO
 		        SET
 			        NOME = @NOME,
@@ -42,19 +37,13 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloMedicamento
                     FORNECEDOR_ID = @FORNECEDOR_ID
 		        WHERE
 			        ID = @ID";
-        }
 
-        protected override string sqlExcluir
-        {
-            get =>
+        protected override string sqlExcluir=>
             @"DELETE FROM TBMEDICAMENTO
 		        WHERE
 			        ID = @ID";
-        }
 
-        protected override string sqlSelecionarPorId
-        {
-            get =>
+        protected override string sqlSelecionarPorId =>
             @"SELECT 
 		            M.ID, 
 		            M.NOME,
@@ -70,11 +59,8 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloMedicamento
                     TBFORNECEDOR F ON M.FORNECEDOR_ID = F.ID
                 WHERE
                     M.ID = @ID";
-        }
 
-        protected override string sqlSelecionarTodos
-        {
-            get =>
+        protected override string sqlSelecionarTodos =>
              @"SELECT 
 		            M.ID, 
 		            M.NOME,
@@ -88,7 +74,6 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloMedicamento
 		            TBMEDICAMENTO M 
                 INNER JOIN
                     TBFORNECEDOR F ON M.FORNECEDOR_ID = F.ID";
-        }
 
         #endregion
     }

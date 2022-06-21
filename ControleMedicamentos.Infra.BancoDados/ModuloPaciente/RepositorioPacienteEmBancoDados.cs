@@ -7,9 +7,7 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloPaciente
         RepositorioBase<Paciente, ValidadorPaciente, MapeadorPaciente>
     {
         #region SQL Queries
-        protected override string sqlInserir
-        {
-            get =>
+        protected override string sqlInserir =>
              @"INSERT INTO TBPACIENTE
              (
                     NOME,
@@ -20,30 +18,21 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloPaciente
                     @NOME,
                     @CARTAOSUS
             );SELECT SCOPE_IDENTITY();";
-        }
 
-        protected override string sqlEditar
-        {
-            get =>
+        protected override string sqlEditar =>
            @"UPDATE TBPACIENTE
 		        SET
 			        NOME = @NOME,
                     CARTAOSUS = @CARTAOSUS
 		        WHERE
 			        ID = @ID";
-        }
 
-        protected override string sqlExcluir
-        {
-            get =>
+        protected override string sqlExcluir =>
             @"DELETE FROM TBPACIENTE
 		        WHERE
 			        ID = @ID";
-        }
 
-        protected override string sqlSelecionarPorId
-        {
-            get =>
+        protected override string sqlSelecionarPorId =>
             @"SELECT 
 		            ID, 
 		            NOME,
@@ -52,18 +41,14 @@ namespace ControleMedicamentos.Infra.BancoDados.ModuloPaciente
 		            TBPACIENTE
 		        WHERE
                     ID = @ID";
-        }
 
-        protected override string sqlSelecionarTodos
-        {
-            get =>
+        protected override string sqlSelecionarTodos =>
              @"SELECT 
 		            ID, 
 		            NOME,
                     CARTAOSUS
 	            FROM 
 		            TBPACIENTE";
-        }
 
         #endregion
     }
